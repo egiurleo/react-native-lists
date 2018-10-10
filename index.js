@@ -1,6 +1,17 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { View, Text } from "react-native";
 
-import { NativeModules } from 'react-native';
+class reCAPTCHAv3 extends Component {
+  static propTypes = {};
 
-const { RNReactNativeRecaptchaV3 } = NativeModules;
+  render() {
+    return (
+      <View>
+        <Text>Hello</Text>
+      </View>
+    );
+  }
+}
 
-export default RNReactNativeRecaptchaV3;
+export default reCAPTCHAv3;

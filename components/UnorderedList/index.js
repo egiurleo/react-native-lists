@@ -11,46 +11,52 @@ class UnorderedList extends Component {
       PropTypes.oneOf(['cirlce', 'disc', 'square', 'none']),
       PropTypes.element,
     ]),
+    margin: PropTypes.number,
   };
 
   static defaultProps = {
     children: [],
     type: 'disc',
+    margin: 10,
   };
 
   bulletElement = () => {
-    if (React.isValidElement(this.props.type)) {
-      return this.props.type;
+    const { type } = this.props;
+    let bullet;
+
+    if (type === 'circle') {
+      bullet = <Text>{'\u25E6'}</Text>;
+    } else if (type === 'disc') {
+      bullet = <Text>{'\u2022'}</Text>;
+    } else if (type === 'square') {
+      <Text>{'\u25A0'}</Text>;
+    } else if (type === 'none') {
+      return null;
+    } else if (React.isValidElement(this.props.type)) {
+      bullet = this.props.type;
+    } else {
+      throw 'Prop type is invalid!';
     }
 
-    switch (this.props.type) {
-      case 'circle':
-        return <Text>{'\u25E6'}</Text>;
-      case 'disc':
-        return <Text>{'\u2022'}</Text>;
-      case 'square':
-        return <Text>{'\u25A0'}</Text>;
-      case 'none':
-        return null;
-      default:
-        throw 'Prop type is invalid!';
-    }
+    return <View style={styles.bullet}>{bullet}</View>;
   };
 
   render() {
+    const { children, margin } = this.props;
+    debugger;
     return (
       <View>
-        {this.props.children.map(child => {
+        {children.map(child => {
           if (child.type == ListItem) {
             return (
-              <View style={styles.listItemContainer}>
+              <View style={[styles.listItemContainer, { paddingLeft: margin }]}>
                 {this.bulletElement()}
                 {child}
               </View>
             );
           }
 
-          return child;
+          return <View style={[{ paddingLeft: margin }]}>{child}</View>;
         })}
       </View>
     );

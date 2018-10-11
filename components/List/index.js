@@ -19,7 +19,7 @@ class List extends Component {
   render() {
     var { children, level, getBulletElement } = this.props;
 
-    if (children.type !== Array) {
+    if (!Array.isArray(children)) {
       children = [children];
     }
 

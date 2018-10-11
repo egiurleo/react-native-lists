@@ -29,11 +29,11 @@ class UnorderedList extends Component {
     } else if (type === 'disc') {
       bullet = <Text>{'\u2022'}</Text>;
     } else if (type === 'square') {
-      <Text>{'\u25A0'}</Text>;
+      bullet = <Text>{'\u25A0'}</Text>;
+    } else if (React.isValidElement(type)) {
+      bullet = type;
     } else if (type === 'none') {
       return null;
-    } else if (React.isValidElement(this.props.type)) {
-      bullet = this.props.type;
     } else {
       throw 'Prop type is invalid!';
     }
@@ -49,14 +49,14 @@ class UnorderedList extends Component {
         {children.map(child => {
           if (child.type == ListItem) {
             return (
-              <View style={[styles.listItemContainer, { paddingLeft: margin }]}>
+              <View style={[styles.listItemContainer]}>
                 {this.bulletElement()}
                 {child}
               </View>
             );
           }
 
-          return <View style={[{ paddingLeft: margin }]}>{child}</View>;
+          return <View style={[{ marginLeft: margin }]}>{child}</View>;
         })}
       </View>
     );

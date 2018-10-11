@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
-import ListItem from '../ListItem';
+import List from '../List';
 import styles from './styles';
 
 const DISC = 'disc';
@@ -16,7 +16,6 @@ class UnorderedList extends Component {
       PropTypes.oneOf([CIRCLE, DISC, SQUARE, NONE]),
       PropTypes.element,
     ]),
-    margin: PropTypes.number,
   };
 
   static defaultProps = {
@@ -38,7 +37,7 @@ class UnorderedList extends Component {
     }
   };
 
-  bulletElement = () => {
+  getBulletElement = _ => {
     const type = this.props.type || this.getDefaultBulletType();
     let bullet;
 
@@ -60,30 +59,12 @@ class UnorderedList extends Component {
   };
 
   render() {
-    const { children, margin } = this.props;
+    const { children, type, level } = this.props;
 
     return (
-      <View>
-        {children.map(child => {
-          if (child.type == ListItem) {
-            return (
-              <View style={[styles.listItemContainer]}>
-                {this.bulletElement()}
-                {child}
-              </View>
-            );
-          }
-
-          return (
-            <View style={[{ marginLeft: margin }]}>
-              {React.cloneElement(child, {
-                level: this.props.level + 1,
-                margin,
-              })}
-            </View>
-          );
-        })}
-      </View>
+      <List type={type} level={level} getBulletElement={this.getBulletElement}>
+        {children}
+      </List>
     );
   }
 }

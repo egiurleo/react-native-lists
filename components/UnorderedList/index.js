@@ -19,7 +19,7 @@ class UnorderedList extends Component {
   };
 
   bulletElement = () => {
-    if (this.props.type.type == PropTypes.element) {
+    if (React.isValidElement(this.props.type)) {
       return this.props.type;
     }
 

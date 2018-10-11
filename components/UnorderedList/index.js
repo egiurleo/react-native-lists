@@ -4,11 +4,16 @@ import { View, Text } from 'react-native';
 import ListItem from '../ListItem';
 import styles from './styles';
 
+const DISC = 'disc';
+const CIRCLE = 'circle';
+const SQUARE = 'square';
+const NONE = 'none';
+
 class UnorderedList extends Component {
   static propTypes = {
     children: PropTypes.array,
     type: PropTypes.oneOfType([
-      PropTypes.oneOf(['cirlce', 'disc', 'square', 'none']),
+      PropTypes.oneOf([CIRCLE, DISC, SQUARE, NONE]),
       PropTypes.element,
     ]),
     margin: PropTypes.number,
@@ -16,23 +21,36 @@ class UnorderedList extends Component {
 
   static defaultProps = {
     children: [],
-    type: 'disc',
     margin: 10,
+    level: 0,
+  };
+
+  getDefaultBulletType = () => {
+    const { level } = this.props;
+
+    switch (level) {
+      case 0:
+        return DISC;
+      case 1:
+        return CIRCLE;
+      default:
+        return SQUARE;
+    }
   };
 
   bulletElement = () => {
-    const { type } = this.props;
+    const type = this.props.type || this.getDefaultBulletType();
     let bullet;
 
-    if (type === 'circle') {
+    if (type === CIRCLE) {
       bullet = <Text>{'\u25E6'}</Text>;
-    } else if (type === 'disc') {
+    } else if (type === DISC) {
       bullet = <Text>{'\u2022'}</Text>;
-    } else if (type === 'square') {
-      bullet = <Text>{'\u25A0'}</Text>;
+    } else if (type === SQUARE) {
+      bullet = <Text>{'\u25AA'}</Text>;
     } else if (React.isValidElement(type)) {
       bullet = type;
-    } else if (type === 'none') {
+    } else if (type === NONE) {
       return null;
     } else {
       throw 'Prop type is invalid!';
@@ -43,7 +61,7 @@ class UnorderedList extends Component {
 
   render() {
     const { children, margin } = this.props;
-    debugger;
+
     return (
       <View>
         {children.map(child => {
@@ -56,7 +74,14 @@ class UnorderedList extends Component {
             );
           }
 
-          return <View style={[{ marginLeft: margin }]}>{child}</View>;
+          return (
+            <View style={[{ marginLeft: margin }]}>
+              {React.cloneElement(child, {
+                level: this.props.level + 1,
+                margin,
+              })}
+            </View>
+          );
         })}
       </View>
     );

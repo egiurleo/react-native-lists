@@ -1,8 +1,8 @@
 {
-  "name": "react-native-recaptcha-v3",
+  "name": "react-native-lists",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:egiurleo/react-native-recaptcha-v3.git",
+  "repository": "git@github.com:egiurleo/react-native-lists.git",
   "author": "Emily Giurleo <e.m.giurleo@gmail.com>",
   "license": "MIT",
   "peerDependencies": {

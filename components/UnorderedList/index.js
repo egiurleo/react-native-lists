@@ -55,7 +55,7 @@ class UnorderedList extends Component {
       throw 'Prop type is invalid!';
     }
 
-    return <View style={styles.bullet}>{bullet}</View>;
+    return bullet;
   };
 
   render() {

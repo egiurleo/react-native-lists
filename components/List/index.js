@@ -29,7 +29,7 @@ class List extends Component {
           if (child.type == ListItem) {
             return (
               <View style={[styles.listItemContainer]}>
-                {getBulletElement(idx)}
+                <View style={styles.bullet}>{getBulletElement(idx)}</View>
                 {child}
               </View>
             );

@@ -9,6 +9,8 @@ class List extends Component {
     children: PropTypes.array,
     getBulletElement: PropTypes.func,
     level: PropTypes.number.isRequired,
+    customStyle: PropTypes.object,
+    customBulletStyle: PropTypes.object,
   };
 
   static defaultProps = {
@@ -24,12 +26,12 @@ class List extends Component {
     }
 
     return (
-      <View>
+      <View style={{ ...this.props.customStyle }}>
         {children.map((child, idx) => {
           if (child.type == ListItem) {
             return (
               <View style={[styles.listItemContainer]}>
-                <View style={styles.bullet}>{getBulletElement(idx)}</View>
+                <View style={[styles.bullet]}>{getBulletElement(idx)}</View>
                 {child}
               </View>
             );

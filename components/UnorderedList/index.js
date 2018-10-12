@@ -16,6 +16,8 @@ class UnorderedList extends Component {
       PropTypes.oneOf([CIRCLE, DISC, SQUARE, NONE]),
       PropTypes.element,
     ]),
+    customStyle: PropTypes.object,
+    customBulletStyle: PropTypes.object,
   };
 
   static defaultProps = {
@@ -42,11 +44,11 @@ class UnorderedList extends Component {
     let bullet;
 
     if (type === CIRCLE) {
-      bullet = <Text>{'\u25E6'}</Text>;
+      bullet = <Text>{'\u25E6\uFE0E'}</Text>;
     } else if (type === DISC) {
-      bullet = <Text>{'\u2022'}</Text>;
+      bullet = <Text>{'\u2022\uFE0E'}</Text>;
     } else if (type === SQUARE) {
-      bullet = <Text>{'\u25AA'}</Text>;
+      bullet = <Text>{'\u25AA\uFE0E'}</Text>;
     } else if (React.isValidElement(type)) {
       bullet = type;
     } else if (type === NONE) {
@@ -55,14 +57,21 @@ class UnorderedList extends Component {
       throw 'Prop type is invalid!';
     }
 
-    return bullet;
+    return React.cloneElement(bullet, {
+      style: { ...this.props.customBulletStyle },
+    });
   };
 
   render() {
-    const { children, type, level } = this.props;
+    const { children, type, level, customStyle } = this.props;
 
     return (
-      <List type={type} level={level} getBulletElement={this.getBulletElement}>
+      <List
+        type={type}
+        level={level}
+        getBulletElement={this.getBulletElement}
+        customStyle={customStyle}
+      >
         {children}
       </List>
     );

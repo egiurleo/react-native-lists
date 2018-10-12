@@ -14,6 +14,8 @@ class OrderedList extends Component {
   static propTypes = {
     children: PropTypes.array,
     type: PropTypes.oneOf([ONE, I, i, A, a]),
+    customStyle: PropTypes.object,
+    customBulletStyle: PropTypes.object,
   };
 
   static defaultProps = {
@@ -47,14 +49,21 @@ class OrderedList extends Component {
         throw 'Prop type is invalid!';
     }
 
-    return <Text>{formattedIdx}.</Text>;
+    return (
+      <Text style={{ ...this.props.customBulletStyle }}>{formattedIdx}.</Text>
+    );
   };
 
   render() {
-    const { children, type, level } = this.props;
+    const { children, type, level, customStyle } = this.props;
 
     return (
-      <List type={type} level={level} getBulletElement={this.getBulletElement}>
+      <List
+        type={type}
+        level={level}
+        getBulletElement={this.getBulletElement}
+        customStyle={customStyle}
+      >
         {children}
       </List>
     );

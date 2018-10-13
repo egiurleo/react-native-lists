@@ -50,7 +50,7 @@ class App extends Component {
 |`customStyle`      | Object | Custom styles for the list object                         |
 |`customBulletStyle`| Object | Custom styles for the list bullets                        |
 
-###ListItem
+### ListItem
 | Prop        | Type   | Description                     |
 |-------------|--------|---------------------------------|
 |`customStyle`| Object | Custom styles for the list item |

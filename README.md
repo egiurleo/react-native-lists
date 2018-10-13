@@ -38,8 +38,6 @@ class App extends Component {
 
 ### UnorderedList
 |Prop|Type|Description|
-|----|----|-----------|
-|children|| Prop              | Type                    | Description                                                                                           |
 |-------------------|-------------------------|-------------------------------------------------------------------------------------------------------|
 | `type`            | String or React element | Supports all regular HTML types ("disc", "circle", "square", "none") as well as custom React elements |
 | `customStyle`     | Object                  | Custom styles for the list object                                                                     |

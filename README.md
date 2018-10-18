@@ -38,17 +38,19 @@ class App extends Component {
 
 ### UnorderedList
 |Prop|Type|Description|
-|-------------------|-------------------------|-------------------------------------------------------------------------------------------------------|
-| `type`            | String or React element | Supports all regular HTML types ("disc", "circle", "square", "none") as well as custom React elements |
-| `customStyle`     | Object                  | Custom styles for the list object                                                                     |
-|`customBulletStyle`| Object                  | Custom styles for the list bullets                                                                    |
+|-------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------|
+| `type`            | String or React element           | Supports all regular HTML types ("disc", "circle", "square", "none") as well as custom React elements |
+| `customStyle`     | Object                            | Custom styles for the list object                                                                     |
+|`customBulletStyle`| Object                            | Custom styles for the list bullets                                                                    |
+|`alignBullets`     | One of: 'top', 'center', 'bottom' | Where to align the list bullets                                                                       |
 
 ### OrderedList
-| Prop              | Type   | Description                                               |
-|-------------------|--------|-----------------------------------------------------------|
-|`type`             | String | Supports all regular HTML types ("1", "I", "i", "A", "a") |
-|`customStyle`      | Object | Custom styles for the list object                         |
-|`customBulletStyle`| Object | Custom styles for the list bullets                        |
+| Prop              | Type                              | Description                                               |
+|-------------------|-----------------------------------|-----------------------------------------------------------|
+|`type`             | String                            | Supports all regular HTML types ("1", "I", "i", "A", "a") |
+|`customStyle`      | Object                            | Custom styles for the list object                         |
+|`customBulletStyle`| Object                            | Custom styles for the list bullets                        |
+|`alignBullets`     | One of: 'top', 'center', 'bottom' | Where to align the list bullets                           |
 
 ### ListItem
 | Prop        | Type   | Description                     |

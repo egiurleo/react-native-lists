@@ -26,7 +26,7 @@ class List extends Component {
     }
 
     return (
-      <View style={{ ...this.props.customStyle }}>
+      <View style={this.props.customStyle}>
         {children.map((child, idx) => {
           if (child.type == ListItem) {
             return (

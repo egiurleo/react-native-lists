@@ -14,9 +14,6 @@ const styles = StyleSheet.create({
   bottom: {
     alignItems: 'flex-end',
   },
-  bullet: {
-    marginRight: 5,
-  },
   childContainer: {
     paddingLeft: 10,
   },

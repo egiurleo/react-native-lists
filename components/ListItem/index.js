@@ -9,9 +9,7 @@ class ListItem extends Component {
   };
 
   render() {
-    return (
-      <View style={{ ...this.props.customStyle }}>{this.props.children}</View>
-    );
+    return <View style={this.props.customStyle}>{this.props.children}</View>;
   }
 }
 

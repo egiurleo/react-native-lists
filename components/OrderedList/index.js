@@ -49,9 +49,7 @@ class OrderedList extends Component {
         throw 'Prop type is invalid!';
     }
 
-    return (
-      <Text style={{ ...this.props.customBulletStyle }}>{formattedIdx}.</Text>
-    );
+    return <Text style={this.props.customBulletStyle}>{formattedIdx}.</Text>;
   };
 
   render() {

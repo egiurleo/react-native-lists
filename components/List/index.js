@@ -11,15 +11,17 @@ class List extends Component {
     level: PropTypes.number.isRequired,
     customStyle: PropTypes.object,
     customBulletStyle: PropTypes.object,
+    alignBullets: PropTypes.oneOf(['top', 'bottom', 'center']),
   };
 
   static defaultProps = {
     children: [],
     getBulletElement: () => null,
+    alignBullets: 'center',
   };
 
   render() {
-    var { children, level, getBulletElement } = this.props;
+    var { children, level, getBulletElement, alignBullets } = this.props;
 
     if (!Array.isArray(children)) {
       children = [children];
@@ -30,7 +32,7 @@ class List extends Component {
         {children.map((child, idx) => {
           if (child.type == ListItem) {
             return (
-              <View style={[styles.listItemContainer]}>
+              <View style={[styles.listItemContainer, styles[alignBullets]]}>
                 <View style={[styles.bullet]}>{getBulletElement(idx)}</View>
                 {child}
               </View>

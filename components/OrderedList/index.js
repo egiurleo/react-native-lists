@@ -16,6 +16,7 @@ class OrderedList extends Component {
     type: PropTypes.oneOf([ONE, I, i, A, a]),
     customStyle: PropTypes.object,
     customBulletStyle: PropTypes.object,
+    alignBullets: PropTypes.oneOf(['top', 'bottom', 'center']),
   };
 
   static defaultProps = {
@@ -53,7 +54,7 @@ class OrderedList extends Component {
   };
 
   render() {
-    const { children, type, level, customStyle } = this.props;
+    const { children, type, level, customStyle, alignBullets } = this.props;
 
     return (
       <List
@@ -61,6 +62,7 @@ class OrderedList extends Component {
         level={level}
         getBulletElement={this.getBulletElement}
         customStyle={customStyle}
+        alignBullets={alignBullets}
       >
         {children}
       </List>

@@ -18,6 +18,7 @@ class UnorderedList extends Component {
     ]),
     customStyle: PropTypes.object,
     customBulletStyle: PropTypes.object,
+    alignBullets: PropTypes.oneOf(['top', 'bottom', 'center']),
   };
 
   static defaultProps = {
@@ -63,7 +64,7 @@ class UnorderedList extends Component {
   };
 
   render() {
-    const { children, type, level, customStyle } = this.props;
+    const { children, type, level, customStyle, alignBullets } = this.props;
 
     return (
       <List
@@ -71,6 +72,7 @@ class UnorderedList extends Component {
         level={level}
         getBulletElement={this.getBulletElement}
         customStyle={customStyle}
+        alignBullets={alignBullets}
       >
         {children}
       </List>

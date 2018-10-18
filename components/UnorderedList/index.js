@@ -58,7 +58,7 @@ class UnorderedList extends Component {
     }
 
     return React.cloneElement(bullet, {
-      style: {this.props.customBulletStyle},
+      style: this.props.customBulletStyle,
     });
   };
 
